@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import './App.css';
 import PlantList from './components/PlantList'
-import PlantContext from './contexts/PlantContext'
+import UserProfile from './components/UserProfile'
 import EditPlant from './components/EditPlant'
 import { axiosWithAuth } from './utils/axiosWithAuth';
 
@@ -30,7 +30,7 @@ function App() {
           <Switch>
             <Route path='/login' component={Login} />
             <Route path='/plantlist' component={PlantList} setPlantList={setPlantList} getPlantList={getPlantList} plantList={plantList}/>
-            <Route path='/account' component={Account} />
+            <Route path='/account/:id' component={UserProfile} />
             <Route path='/edit-plant/:id' component={EditPlant} />
           </Switch>
         </div>
