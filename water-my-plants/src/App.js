@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import './App.css';
 import PlantList from './components/PlantList'
 import UserProfile from './components/UserProfile'
 import EditPlant from './components/EditPlant'
 import { axiosWithAuth } from './utils/axiosWithAuth';
+import PlantContext from './contexts/PlantContext'
 
 function App() {
   const [plantList, setPlantList] = useState([])
@@ -19,23 +20,25 @@ function App() {
   
   return (
     <Router>
-       <ProductContext.Provider value={{plantList, getPlantList, setPlantList}}>
+       <PlantContext.Provider value={{plantList, getPlantList, setPlantList}}>
       <div className="App">
         <nav>
-          <Link to="/login">Sign Up</Link>
+          <Link to="/register">Sign Up</Link>
           <Link to="/login">Sign In</Link>
           <Link to='/account'>Account</Link>
+          <Link to='/plantlist'>Plant list</Link>
         </nav>
         <div>
           <Switch>
-            <Route path='/login' component={Login} />
+            {/* <Route path='/register' component={Registration} />
+            <Route path='/login' component={Login} /> */}
             <Route path='/plantlist' component={PlantList} setPlantList={setPlantList} getPlantList={getPlantList} plantList={plantList}/>
             <Route path='/account/:id' component={UserProfile} />
             <Route path='/edit-plant/:id' component={EditPlant} />
           </Switch>
         </div>
       </div>
-      </ProductContext.Provider>
+      </PlantContext.Provider>
     </Router>
   );
 }

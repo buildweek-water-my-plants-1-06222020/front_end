@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { useParams, useHistory } from "react-router-dom";
+import axios from "axios";
 
 
 const initialDetails = {
-    username='',
-    password='',
-    phoneNumber=''
+    username:'',
+    password:'',
+    phoneNumber:''
 }
 
 const UserProfile = () => {

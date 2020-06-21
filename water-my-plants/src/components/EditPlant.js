@@ -4,15 +4,15 @@ import axios from "axios";
 
 
 const initialDetails = {
-    nickname='',
-    species='',
-    waterFreq=''
+    nickname:'',
+    species:'',
+    waterFreq:''
 }
 
 const EditPlant = props => {
     const { push } = useHistory();
     const { id } = useParams();
-    const [details, setDtails] = useState(initialDetails)
+    const [details, setDetails] = useState(initialDetails)
 
     useEffect(() => {
         axios

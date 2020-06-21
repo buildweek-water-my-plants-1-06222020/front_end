@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useHistory} from 'react'
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 const Plant = props => {
+    const { push } = useHistory();
 
     const handleDelete = e => {
         e.preventDefault();
