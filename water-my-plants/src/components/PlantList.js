@@ -14,7 +14,7 @@ const PlantList = () => {
     
   const getPlantList= () => {
     axiosWithAuth
-    .get(`/user/${id}/plants`)
+    .get(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}/plants`)
     .then(res => setPlantList(res.data))
     .catch(err => console.log(err))
 };

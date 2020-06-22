@@ -25,7 +25,7 @@ const AddPlant = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`http://localhost:5000/users/${id}/plants`, details)
+        axios.put(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}/plants`, details)
             .then(res => {
                 props.setPlantList(res.data);
                 props.getPlantList();
@@ -63,6 +63,7 @@ const AddPlant = props => {
                 />
                 <button className="add-button">Add New Plant</button>
             </form>
+            {/* <Suggestions /> */}
         </div>
     )
 }

@@ -17,7 +17,7 @@ const UserProfile = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/api/users/${id}`)
+            .get(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}`)
             .then(res => {
                 console.log(res.data)
                 setDetails(res.data);
@@ -34,7 +34,7 @@ const UserProfile = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`http://localhost:5000/api/users/${id}`, details)
+        axios.put(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}`, details)
         .then(res => {
             push(`/user/${id}`)
         })
