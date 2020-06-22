@@ -45,7 +45,7 @@ const EditPlant = props => {
 
     return (
         <div id='updatePlant'>
-            <h2 id='updatePlantNiceName'>Update Nickname</h2>
+            <h2>Update Plant Information</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

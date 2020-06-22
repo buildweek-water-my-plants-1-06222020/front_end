@@ -14,6 +14,8 @@ const PlantList = () => {
 
 return(
     <div>
+        <h1>Water My Plants</h1>
+        <h2>My PLant List:</h2>
         <PlantCard />
     </div>
 )
