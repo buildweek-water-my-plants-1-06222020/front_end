@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, useParams } from "react-router-dom";
 import './App.css';
 import PlantList from './components/PlantList'
 import UserProfile from './components/UserProfile'
@@ -11,17 +11,9 @@ import PlantContext from './contexts/PlantContext'
 function App() {
   const [plantList, setPlantList] = useState([])
 
-  const getPlantList= () => {
-    axiosWithAuth
-    .get('/api/plants') //guess on end point 
-    .then(res => setPlantList(res.data))
-    .catch(err => console.log(err))
-};
-
-  
   return (
     <Router>
-       <PlantContext.Provider value={{plantList, getPlantList, setPlantList}}>
+       <PlantContext.Provider value={{plantList, setPlantList}}>
       <div className="App">
         <nav>
           <Link to="/register">Sign Up</Link>
@@ -33,7 +25,7 @@ function App() {
           <Switch>
             {/* <Route path='/register' component={Registration} />
             <Route path='/login' component={Login} /> */}
-            <Route path='/plantlist' component={PlantList} setPlantList={setPlantList} getPlantList={getPlantList} plantList={plantList}/>
+            <Route path='/plantlist' component={PlantList} setPlantList={setPlantList} plantList={plantList}/>
             <Route path='/account/:id' component={UserProfile} />
             <Route path='/edit-plant/:id' component={EditPlant} />
             <Route path='/add-plant' component={AddPlant} />

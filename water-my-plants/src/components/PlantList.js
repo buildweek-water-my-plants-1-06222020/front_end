@@ -9,9 +9,18 @@ import { useParams, useHistory } from "react-router-dom";
 const PlantList = () => {
     const { push } = useHistory();
     const { id } = useParams();
-    const {getPlantList, plantList, setPlantList} = useContext(PlantContext)
+    const { plantList, setPlantList} = useContext(PlantContext)
    
     
+  const getPlantList= () => {
+    axiosWithAuth
+    .get(`/user/${id}/plants`)
+    .then(res => setPlantList(res.data))
+    .catch(err => console.log(err))
+};
+
+
+
     useEffect(() => {
         getPlantList()
     })
