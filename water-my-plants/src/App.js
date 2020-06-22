@@ -4,6 +4,7 @@ import './App.css';
 import PlantList from './components/PlantList'
 import UserProfile from './components/UserProfile'
 import EditPlant from './components/EditPlant'
+import AddPlant from './components/AddPlant'
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import PlantContext from './contexts/PlantContext'
 
@@ -35,6 +36,7 @@ function App() {
             <Route path='/plantlist' component={PlantList} setPlantList={setPlantList} getPlantList={getPlantList} plantList={plantList}/>
             <Route path='/account/:id' component={UserProfile} />
             <Route path='/edit-plant/:id' component={EditPlant} />
+            <Route path='/add-plant' component={AddPlant} />
           </Switch>
         </div>
       </div>
