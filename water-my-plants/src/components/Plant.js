@@ -7,7 +7,7 @@ const Plant = props => {
     const handleDelete = e => {
         e.preventDefault();
         axiosWithAuth
-        .delete(`http://localhost:5000/api/plant/${props.plant.id}`)
+        .delete(`http://localhost:5000/api/plants/${props.plant.id}`)
         .then(res => {
             props.getPlantList();
             push('/plantlist')
