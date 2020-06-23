@@ -16,7 +16,7 @@ const EditPlant = props => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/api/plant/${id}`)
+            .get(`https://water-my-plants-buildweek.herokuapp.com/api/plant/${id}`)
             .then(res => {
                 console.log(res.data)
                 setDetails(res.data);
@@ -34,7 +34,7 @@ const EditPlant = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`http://localhost:5000/api/plant/${id}`, details)
+        axios.put(`https://water-my-plants-buildweek.herokuapp.com/api/plant/${id}`, details)
         .then(res => {
             props.setPlantList(res.data);
             props.getPlantList();

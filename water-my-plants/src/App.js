@@ -7,6 +7,7 @@ import EditPlant from './components/EditPlant'
 import AddPlant from './components/AddPlant'
 import { axiosWithAuth } from './utils/axiosWithAuth';
 import PlantContext from './contexts/PlantContext'
+import LoginMark from './components/LoginMark'
 
 function App() {
   const [plantList, setPlantList] = useState([])
@@ -23,10 +24,10 @@ function App() {
         </nav>
         <div>
           <Switch>
-            {/* <Route path='/register' component={Registration} />
-            <Route path='/login' component={Login} /> */}
-            <Route path='/plantlist' component={PlantList} setPlantList={setPlantList} plantList={plantList}/>
-            <Route path='/account/:id' component={UserProfile} />
+            {/* <Route path='/register' component={Registration} /> */}
+            <Route path='/login' component={LoginMark} />
+            <Route path='/plantlist' component={PlantList} />
+            <Route path='/account' component={UserProfile} />
             <Route path='/edit-plant/:id' component={EditPlant} />
             <Route path='/add-plant' component={AddPlant} />
           </Switch>

@@ -6,7 +6,7 @@ import axios from "axios";
 const initlalDetails = {
         nickname: '',
         species: '',
-        waterFreq: '',
+        h20_frequency: '',
         id: Date.now()
 }
 
@@ -25,7 +25,7 @@ const AddPlant = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`http://localhost:5000/users/${id}/plants`, details)
+        axios.post(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}/plants`, details)
             .then(res => {
                 props.setPlantList(res.data);
                 props.getPlantList();
@@ -56,13 +56,14 @@ const AddPlant = props => {
                 <div />
                 <input
                     type="text"
-                    name="waterFreq"
+                    name="h20_frequency"
                     onChange={handleChange}
                     placeholder="Water Frequency"
-                    value={details.waterFreq}
+                    value={details.h20_frequency}
                 />
                 <button className="add-button">Add New Plant</button>
             </form>
+            {/* <Suggestions /> */}
         </div>
     )
 }
