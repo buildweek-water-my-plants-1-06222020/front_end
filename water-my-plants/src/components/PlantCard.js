@@ -4,7 +4,7 @@ import Plant from './Plant'
 
 const PlantCard = () => {
     const { getPlantList, plantList } = useContext(PlantContext)
-   
+   console.log(plantList)
     return(
         <div>
             {plantList.map(plant => (

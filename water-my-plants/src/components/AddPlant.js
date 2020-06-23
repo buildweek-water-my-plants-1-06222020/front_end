@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 
 const initlalDetails = {
         nickname: '',
         species: '',
-        h20_frequency: '',
-        id: Date.now()
+        h2o_frequency: ''
 }
 
-const AddPlant = props => {
+const AddPlant = ({setPlantList, getPlantList, plantList}) => {
     const { push } = useHistory();
     const { id } = useParams();
     const [details, setDetails] = useState(initlalDetails)
@@ -25,10 +24,12 @@ const AddPlant = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.post(`/users/${id}/plants`, details)
+        axiosWithAuth()
+       .post(`/users/${id}/plants`, details)
             .then(res => {
-                props.setPlantList(res.data);
-                props.getPlantList();
+                console.log(res)
+                setPlantList([...plantList, res.data]);
+                getPlantList();
                 push(`/plantlist`)
             })
             .catch(err => console.log(err))
@@ -56,14 +57,13 @@ const AddPlant = props => {
                 <div />
                 <input
                     type="text"
-                    name="h20_frequency"
+                    name="h2o_frequency"
                     onChange={handleChange}
                     placeholder="Water Frequency"
-                    value={details.h20_frequency}
+                    value={details.h2o_frequency}
                 />
                 <button className="add-button">Add New Plant</button>
             </form>
-            {/* <Suggestions /> */}
         </div>
     )
 }

@@ -12,22 +12,22 @@ const PlantList = () => {
     const { plantList, setPlantList} = useContext(PlantContext)
    
     
-//   const getPlantList= () => {
-//     axiosWithAuth()
-//     .get(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}/plants`)
-//     .then(res => setPlantList(res.data))
-//     .catch(err => console.log(err))
-// };
-
-
-const crz = ''
-const getPlantList = () => {
-  axiosWithAuth()
-  .get(`${crz}/auth/plants`)
-//   .then(res => setPlantList(res.data))
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
+  const getPlantList= () => {
+    axiosWithAuth()
+    .get(`/users/${id}/plants`)
+    .then(res => setPlantList(res.data))
+    .catch(err => console.log(err))
 };
+
+
+
+// const getPlantList = () => {
+//   axiosWithAuth()
+//   .get(`/auth/plants`)
+//   .then(res => setPlantList(res.data))
+// //   .then(res => console.log(res.data[0]))
+//   .catch(err => console.log(err))
+// };
 
 
     useEffect(() => {
@@ -40,7 +40,7 @@ return(
         <h1>Water My Plants</h1>
         <h2>My Plant List:</h2>
         <button onClick={() => push('/add-plant')}>Add A Plant</button>
-        <PlantCard plantList={plantList} />
+        <PlantCard />
     </div>
 )
 
