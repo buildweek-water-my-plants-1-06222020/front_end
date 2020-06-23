@@ -6,7 +6,7 @@ import {axiosWithAuth} from '../utils/axiosWithAuth'
 const initialDetails = {
     username:'',
     password:'',
-    phone_Number:''
+    phone_number:''
 }
 
 const UserProfile = () => {
@@ -70,7 +70,7 @@ const UserProfile = () => {
                     name="phoneNumber"
                     onChange={handleChange}
                     placeholder="Phone Number"
-                    value={details.phone_Number}
+                    value={details.phone_number}
                 />
 
                 <button className="update-user-button">Update</button>
