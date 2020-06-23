@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 
 const initialDetails = {
     nickname:'',
     species:'',
-    waterFreq:''
+    h20_frequency:''
 }
 
 const EditPlant = props => {
@@ -15,8 +16,8 @@ const EditPlant = props => {
     const [details, setDetails] = useState(initialDetails)
 
     useEffect(() => {
-        axios
-            .get(`https://water-my-plants-buildweek.herokuapp.com/api/plant/${id}`)
+        axiosWithAuth()
+            .get(`/plant/${id}`)
             .then(res => {
                 console.log(res.data)
                 setDetails(res.data);
@@ -34,7 +35,7 @@ const EditPlant = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`https://water-my-plants-buildweek.herokuapp.com/api/plant/${id}`, details)
+        axios.put(`/plant/${id}`, details)
         .then(res => {
             props.setPlantList(res.data);
             props.getPlantList();
@@ -65,10 +66,10 @@ const EditPlant = props => {
                 <div />
                 <input
                     type="text"
-                    name="waterFreq"
+                    name="h20_frequency"
                     onChange={handleChange}
                     placeholder="Water Frequency"
-                    value={details.waterFreq}
+                    value={details.h20_frequency}
                 />
                 <button className="update-button">Update</button>
             </form>

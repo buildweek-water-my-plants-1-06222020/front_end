@@ -7,7 +7,7 @@ const Plant = props => {
     const handleDelete = e => {
         e.preventDefault();
         axiosWithAuth
-        .delete(`https://water-my-plants-buildweek.herokuapp.com/api/plants/${props.plant.id}`)
+        .delete(`/plants/${props.plant.id}`)
         .then(res => {
             props.getPlantList();
             push('/plantlist')

@@ -23,7 +23,7 @@ class LoginMark extends React.Component {
     login = e => {
         e.preventDefault();
         axiosWithAuth()
-        .post("https://water-my-plants-buildweek.herokuapp.com/api/auth/login", this.state.credentials)
+        .post("/auth/login", this.state.credentials)
         .then(res =>{
           window.localStorage.setItem('token', res.data.payload)
           this.props.history.push('/plantlist')

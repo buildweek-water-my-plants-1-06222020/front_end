@@ -1,7 +1,6 @@
 import React from "react";
 import { withFormik, Field } from "formik";
 import * as yup from "yup";
-import axios from "axios";
 import styled from "styled-components";
 
 import { 
@@ -10,7 +9,8 @@ import {
   FormDiv,
   Button ,
   Error
-} from './StyledComponents'
+} from '../StyledComponents'
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Label = styled.label`
   margin: 1rem auto;
@@ -110,9 +110,9 @@ export default withFormik({
       password: values.password,
       phonenumber: values.phonenumber
     };
-    axios
+    axiosWithAuth()
       .post(
-        "API LINK",
+        "/auth/register",
         userObj
       )
       .then(res => {
