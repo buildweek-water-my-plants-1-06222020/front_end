@@ -6,7 +6,7 @@ import UserProfile from './components/UserProfile'
 import EditPlant from './components/EditPlant'
 import AddPlant from './components/AddPlant'
 import PlantContext from './contexts/PlantContext'
-import { axiosWithAuth } from './utils/axiosWithAuth'
+// import { axiosWithAuth } from './utils/axiosWithAuth'
 // import LoginMark from './components/LoginMark'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
@@ -14,16 +14,10 @@ import SignUp from './components/SignUp'
 function App() {
   const [plantList, setPlantList] = useState([])
 
-  const getPlantList = () => {
-    axiosWithAuth()
-    .get(`/auth/plants`)
-    .then(res => setPlantList(res.data))
-    .catch(err => console.log(err))
-};
 
   return (
     <Router>
-       <PlantContext.Provider value={{plantList, setPlantList, getPlantList}}>
+       <PlantContext.Provider value={{plantList, setPlantList}}>
       <div className="App">
         <nav>
           <Link to="/register">Sign Up</Link>
