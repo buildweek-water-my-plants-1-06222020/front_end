@@ -9,7 +9,7 @@ import { useParams, useHistory } from "react-router-dom";
 const PlantList = () => {
     const { push } = useHistory();
     const { id } = useParams();
-    const { plantList, setPlantList, getPlantList} = useContext(PlantContext)
+    const { plantList, setPlantList} = useContext(PlantContext)
    
     
 //   const getPlantList= () => {
@@ -20,6 +20,14 @@ const PlantList = () => {
 // };
 
 
+const crz = ''
+const getPlantList = () => {
+  axiosWithAuth()
+  .get(`${crz}/auth/plants`)
+//   .then(res => setPlantList(res.data))
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+};
 
 
     useEffect(() => {
@@ -32,7 +40,7 @@ return(
         <h1>Water My Plants</h1>
         <h2>My Plant List:</h2>
         <button onClick={() => push('/add-plant')}>Add A Plant</button>
-        <PlantCard />
+        <PlantCard plantList={plantList} />
     </div>
 )
 
