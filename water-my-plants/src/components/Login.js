@@ -34,7 +34,7 @@ const Login = props => {
     </>
   );
 };
-const crz = 'https://cors-anywhere.herokuapp.com/'
+
 export default withFormik({
   mapPropsToValues: values => {
     return {
@@ -50,7 +50,7 @@ export default withFormik({
   validateOnBlur: false,
   handleSubmit: (values, { props, resetForm }) => {
     axiosWithAuth()
-      .post(`${crz}/auth/login/`, values)
+      .post('/auth/login/', values)
       .then(res => {
         localStorage.setItem('token', res.data.token);
         resetForm();

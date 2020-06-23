@@ -59,7 +59,7 @@ const SignUp = props => {
     </>
   );
 };
-const crz = 'https://cors-anywhere.herokuapp.com/'
+
 export default withFormik({
   mapPropsToValues: values => {
     return {
@@ -102,7 +102,7 @@ export default withFormik({
     };
     axiosWithAuth()
       .post(
-        `${crz}/auth/register`,
+        `/auth/register`,
         userObj
       )
       .then(res => {
