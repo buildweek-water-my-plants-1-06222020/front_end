@@ -17,7 +17,7 @@ const UserProfile = () => {
 
     useEffect(() => {
         axiosWithAuth()
-            .get(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}`)
+            .get(`/users/${id}`)
             .then(res => {
                 console.log(res.data)
                 setDetails(res.data);
@@ -35,7 +35,7 @@ const UserProfile = () => {
     const handleSubmit = e => {
         e.preventDefault();
         axiosWithAuth()
-        .put(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}`, details)
+        .put(`/users/${id}`, details)
         .then(res => {
             push(`/account`)
         })

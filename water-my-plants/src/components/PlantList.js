@@ -20,7 +20,7 @@ const PlantList = () => {
 // };
 const getPlantList = () => {
     axiosWithAuth()
-    .get(`https://water-my-plants-buildweek.herokuapp.com/api/auth/plants`)
+    .get(`/auth/plants`)
     .then(res => setPlantList(res.data))
     .catch(err => console.log(err))
 };
@@ -37,7 +37,7 @@ return(
         <h1>Water My Plants</h1>
         <h2>My Plant List:</h2>
         <button onClick={() => push('/add-plant')}>Add A Plant</button>
-        <PlantCard plantList={plantList}/>
+        <PlantCard />
     </div>
 )
 

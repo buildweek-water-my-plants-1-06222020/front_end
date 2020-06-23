@@ -25,7 +25,7 @@ const AddPlant = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.post(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}/plants`, details)
+        axios.post(`/users/${id}/plants`, details)
             .then(res => {
                 props.setPlantList(res.data);
                 props.getPlantList();

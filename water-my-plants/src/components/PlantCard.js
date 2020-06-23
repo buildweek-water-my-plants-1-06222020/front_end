@@ -2,8 +2,8 @@ import React, {useContext} from 'react'
 import PlantContext from '../contexts/PlantContext'
 import Plant from './Plant'
 
-const PlantCard = ({plantList}) => {
-    const { getPlantList} = useContext(PlantContext)
+const PlantCard = () => {
+    const { getPlantList, plantList} = useContext(PlantContext)
    
     return(
         <div>

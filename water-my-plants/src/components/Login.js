@@ -1,7 +1,7 @@
 import React from 'react';
 import { withFormik } from 'formik';
 import * as yup from 'yup';
-import axios from 'axios';
+
 
 import { 
   Input,
@@ -9,7 +9,8 @@ import {
   FormDiv,
   Button,
   Error
-} from './StyledComponents'
+} from '../StyledComponents'
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const Login = props => {
   const { errors, touched } = props;
@@ -48,7 +49,7 @@ export default withFormik({
   validateOnChange: false,
   validateOnBlur: false,
   handleSubmit: (values, { props, resetForm }) => {
-    axios
+    axiosWithAuth()
       .post('https://water-my-plant-bw.herokuapp.com/api/auth/login/', values)
       .then(res => {
         localStorage.setItem('token', res.data.token);
