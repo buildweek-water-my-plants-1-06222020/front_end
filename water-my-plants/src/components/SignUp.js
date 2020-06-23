@@ -22,10 +22,6 @@ const SignUp = props => {
     <>
       <Heading>Sign Up</Heading>
       <FormDiv>
-        {touched.firstname && errors.firstname && (
-          <Error>{errors.firstname}</Error>
-        )}
-        <Input type="text" name="firstname" placeholder="First Name" />
 
         {touched.username && errors.username && (
           <Error>{errors.username}</Error>
@@ -67,7 +63,6 @@ const SignUp = props => {
 export default withFormik({
   mapPropsToValues: values => {
     return {
-      firstname: values.firstname || "",
       username: values.username || "",
       password: values.password || "",
       password2: values.password2 || "",
@@ -76,10 +71,6 @@ export default withFormik({
     };
   },
   validationSchema: yup.object().shape({
-    firstname: yup
-      .string()
-      .max(20, "NO MORE THAN 20 CHARACTERS")
-      .required(),
     username: yup
       .string()
       .min(3, "YOUR USERNAME MUST HAVE AT LEAST 3 LETTERS")
@@ -105,7 +96,6 @@ export default withFormik({
   validateOnBlur: false,
   handleSubmit: (values, { props, resetForm }) => {
     let userObj = {
-      fullname: values.firstname,
       username: values.username,
       password: values.password,
       phonenumber: values.phonenumber
