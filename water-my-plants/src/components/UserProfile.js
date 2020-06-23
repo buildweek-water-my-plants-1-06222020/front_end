@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { useParams, useHistory } from "react-router-dom";
-import axios from "axios";
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 
 const initialDetails = {
     username:'',
     password:'',
-    phoneNumber:''
+    phone_Number:''
 }
 
 const UserProfile = () => {
@@ -16,7 +16,7 @@ const UserProfile = () => {
     
 
     useEffect(() => {
-        axios
+        axiosWithAuth()
             .get(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}`)
             .then(res => {
                 console.log(res.data)
@@ -34,9 +34,10 @@ const UserProfile = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}`, details)
+        axiosWithAuth()
+        .put(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}`, details)
         .then(res => {
-            push(`/user/${id}`)
+            push(`/account`)
         })
         .catch(err => console.log(err))
     }
@@ -69,7 +70,7 @@ const UserProfile = () => {
                     name="phoneNumber"
                     onChange={handleChange}
                     placeholder="Phone Number"
-                    value={details.phoneNumber}
+                    value={details.phone_Number}
                 />
 
                 <button className="update-user-button">Update</button>

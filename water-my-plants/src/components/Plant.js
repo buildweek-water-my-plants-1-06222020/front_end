@@ -19,7 +19,7 @@ const Plant = props => {
         <div className='plant'>
             <h2 className='nickname'>{props.plant.nickname}</h2>
             <h3 className='species'>{props.plant.species}</h3>
-            <h3 className='waterFreq'>{props.plant.waterFreq}</h3>
+            <h3 className='h20_frequency'>{props.plant.h20_frequency}</h3>
             <button onClick={() => push(`/edit-plant/${props.plant.id}`)}>Edit Plant</button>
             <button onClick={handleDelete}></button>
         </div>

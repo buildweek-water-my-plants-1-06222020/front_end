@@ -12,9 +12,15 @@ const PlantList = () => {
     const { plantList, setPlantList} = useContext(PlantContext)
    
     
-  const getPlantList= () => {
-    axiosWithAuth
-    .get(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}/plants`)
+//   const getPlantList= () => {
+//     axiosWithAuth()
+//     .get(`https://water-my-plants-buildweek.herokuapp.com/api/users/${id}/plants`)
+//     .then(res => setPlantList(res.data))
+//     .catch(err => console.log(err))
+// };
+const getPlantList = () => {
+    axiosWithAuth()
+    .get(`https://water-my-plants-buildweek.herokuapp.com/api/auth/plants`)
     .then(res => setPlantList(res.data))
     .catch(err => console.log(err))
 };
@@ -23,15 +29,15 @@ const PlantList = () => {
 
     useEffect(() => {
         getPlantList()
-    })
+    }, [])
     
 
 return(
     <div>
         <h1>Water My Plants</h1>
-        <h2>My PLant List:</h2>
+        <h2>My Plant List:</h2>
         <button onClick={() => push('/add-plant')}>Add A Plant</button>
-        <PlantCard />
+        <PlantCard plantList={plantList}/>
     </div>
 )
 
