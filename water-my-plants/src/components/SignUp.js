@@ -28,10 +28,10 @@ const SignUp = props => {
         )}
         <Input type="text" name="username" placeholder="Username" />
 
-        {touched.phonenumber && errors.phonenumber && (
-          <Error>{errors.phonenumber}</Error>
+        {touched.phone_number && errors.phone_number && (
+          <Error>{errors.phone_number}</Error>
         )}
-        <Input type="text" name="phonenumber" placeholder="Phone number" />
+        <Input type="text" name="phone_number" placeholder="Phone number" />
 
         {touched.password && errors.password && (
           <Error>{errors.password}</Error>
@@ -66,7 +66,7 @@ export default withFormik({
       username: values.username || "",
       password: values.password || "",
       password2: values.password2 || "",
-      phonenumber: values.phonenumber || "",
+      phone_number: values.phone_number || "",
       termsOfService: values.termsOfService || false
     };
   },
@@ -83,7 +83,7 @@ export default withFormik({
       .string()
       .oneOf([yup.ref("password"), null, "PASSWORD MUST MATCH"])
       .required(),
-    phonenumber: yup
+    phone_number: yup
       .number()
       .positive()
       .required(),
@@ -98,7 +98,7 @@ export default withFormik({
     let userObj = {
       username: values.username,
       password: values.password,
-      phonenumber: values.phonenumber
+      phone_number: values.phone_number
     };
     axiosWithAuth()
       .post(

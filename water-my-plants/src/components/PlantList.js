@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import PlantCard from './PlantCard'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import PlantContext from '../contexts/PlantContext'
@@ -9,7 +9,7 @@ import { useParams, useHistory } from "react-router-dom";
 const PlantList = () => {
     const { push } = useHistory();
     const { id } = useParams();
-    const { plantList, setPlantList} = useContext(PlantContext)
+    const { plantList, setPlantList, getPlantList} = useContext(PlantContext)
    
     
 //   const getPlantList= () => {
@@ -18,12 +18,7 @@ const PlantList = () => {
 //     .then(res => setPlantList(res.data))
 //     .catch(err => console.log(err))
 // };
-const getPlantList = () => {
-    axiosWithAuth()
-    .get(`/auth/plants`)
-    .then(res => setPlantList(res.data))
-    .catch(err => console.log(err))
-};
+
 
 
 

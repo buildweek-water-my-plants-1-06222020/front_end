@@ -50,7 +50,7 @@ export default withFormik({
   validateOnBlur: false,
   handleSubmit: (values, { props, resetForm }) => {
     axiosWithAuth()
-      .post('https://water-my-plant-bw.herokuapp.com/api/auth/login/', values)
+      .post('/auth/login/', values)
       .then(res => {
         localStorage.setItem('token', res.data.token);
         resetForm();
