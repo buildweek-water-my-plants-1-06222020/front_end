@@ -5,7 +5,6 @@ import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 const initialDetails = {
     username:'',
-    password:'',
     phone_number:''
 }
 
@@ -19,8 +18,8 @@ const UserProfile = () => {
         axiosWithAuth()
             .get(`/users/${id}`)
             .then(res => {
-                console.log(res.data)
-                setDetails(res.data);
+                console.log(res)
+                setDetails(res);
             })
             .catch(err => console.log(err));
     }, [id]);
@@ -53,15 +52,6 @@ const UserProfile = () => {
                     onChange={handleChange}
                     placeholder="Username"
                     value={details.username}
-                />
-                <div />
-
-                <input
-                    type="text"
-                    name="password"
-                    onChange={handleChange}
-                    placeholder="Password"
-                    value={details.password}
                 />
                 <div />
 

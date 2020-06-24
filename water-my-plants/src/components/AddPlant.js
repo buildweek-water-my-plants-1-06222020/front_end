@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from 'react'
 import { useParams, useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-
+import PlantContext from '../contexts/PlantContext'
 
 const initlalDetails = {
         nickname: '',
         species: '',
-        h2o_frequency: ''
+        h2o_frequency: '',
+        user_id: 20
 }
 
-const AddPlant = ({setPlantList, getPlantList, plantList}) => {
+const AddPlant = () => {
     const { push } = useHistory();
     const { id } = useParams();
     const [details, setDetails] = useState(initlalDetails)
+    const { plantList, setPlantList, getPlantList} = useContext(PlantContext)
 
 
     const handleChange = e => {
@@ -28,7 +30,7 @@ const AddPlant = ({setPlantList, getPlantList, plantList}) => {
        .post(`/users/${id}/plants`, details)
             .then(res => {
                 console.log(res)
-                setPlantList([...plantList, res.data]);
+                setPlantList([...plantList, details]);
                 getPlantList();
                 push(`/plantlist`)
             })

@@ -22,7 +22,7 @@ const Plant = props => {
             <h3 className='species'>{props.plant.species}</h3>
             <h3 className='h2o_frequency'>{props.plant.h2o_frequency}</h3>
             <button onClick={() => push(`/edit-plant/${props.plant.id}`)}>Edit Plant</button>
-            <button onClick={handleDelete}></button>
+            <button onClick={handleDelete}>Delete Plant</button>
         </div>
     )
 }
