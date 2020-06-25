@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-
+import PlantContext from '../contexts/PlantContext'
 
 const initialDetails = {
     nickname:'',
     species:'',
-    h20_frequency:''
+    h2o_frequency:'',
+    img_url:null
 }
 
-const EditPlant = props => {
+const EditPlant = () => {
     const { push } = useHistory();
     const { id } = useParams();
     const [details, setDetails] = useState(initialDetails)
+    const { setPlantList } = useContext(PlantContext)
 
     useEffect(() => {
         axiosWithAuth()
-            .get(`/plant/${id}`)
+            .get(`/plants/${id}`)
             .then(res => {
-                console.log(res.data)
+                console.log(res.data.plant_id)
                 setDetails(res.data);
             })
             .catch(err => console.log(err));
@@ -35,11 +36,11 @@ const EditPlant = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`/plant/${id}`, details)
+        axiosWithAuth()
+        .put(`/plants/${id}`, details)
         .then(res => {
-            props.setPlantList(res.data);
-            props.getPlantList();
-            push(`/plant/${id}`)
+            setPlantList(res.data);
+            push(`/plantlist`).reset()
         })
         .catch(err => console.log(err))
     }
@@ -47,7 +48,7 @@ const EditPlant = props => {
     return (
         <div id='updatePlant'>
             <h2>Update Plant Information</h2>
-            <form onSubmit={handleSubmit}>
+            <form id='updatePlantForm' onSubmit={handleSubmit}>
                 <input
                     type="text"
                     name="nickname"
@@ -66,12 +67,13 @@ const EditPlant = props => {
                 <div />
                 <input
                     type="text"
-                    name="h20_frequency"
+                    name="h2o_frequency"
                     onChange={handleChange}
                     placeholder="Water Frequency"
-                    value={details.h20_frequency}
+                    value={details.h2o_frequency}
                 />
-                <button className="update-button">Update</button>
+                <br/>
+                <button className="update-button">Update Plant</button>
             </form>
         </div>
     )

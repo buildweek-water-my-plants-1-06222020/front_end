@@ -1,28 +1,28 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import { useParams, useHistory } from "react-router-dom";
 import {axiosWithAuth} from '../utils/axiosWithAuth'
-
+import UserContext from '../contexts/UserContext'
 
 const initialDetails = {
+    id:'',
     username:'',
     phone_number:''
 }
 
 const UserProfile = () => {
     const { push } = useHistory();
-    const { id } = useParams();
     const [details, setDetails] = useState(initialDetails);
-    
+    const {userId} = useContext(UserContext)
 
     useEffect(() => {
         axiosWithAuth()
-            .get(`/users/${id}`)
+            .get(`/users/${userId.userId}`)
             .then(res => {
                 console.log(res)
-                setDetails(res);
+                setDetails(res.data);
             })
             .catch(err => console.log(err));
-    }, [id]);
+    }, [userId]);
 
     const handleChange = e => {
         setDetails({
@@ -32,10 +32,10 @@ const UserProfile = () => {
     }
 
     const handleSubmit = e => {
-        e.preventDefault();
         axiosWithAuth()
-        .put(`/users/${id}`, details)
+        .put(`/users/${userId.userId}`, details)
         .then(res => {
+            console.log(res)
             push(`/account`)
         })
         .catch(err => console.log(err))
@@ -45,7 +45,7 @@ const UserProfile = () => {
     return (
         <div>
             <h2 id='updateUserInfo'>Update Account Information</h2>
-            <form onSubmit={handleSubmit}>
+            <form id='userInfoForm' onSubmit={handleSubmit}>
                 <input
                     type="text"
                     name="username"
@@ -57,12 +57,12 @@ const UserProfile = () => {
 
                 <input
                     type="text"
-                    name="phoneNumber"
+                    name="phone_number"
                     onChange={handleChange}
                     placeholder="Phone Number"
                     value={details.phone_number}
                 />
-
+                <br/>
                 <button className="update-user-button">Update</button>
             </form>
         </div>

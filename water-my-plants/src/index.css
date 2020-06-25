@@ -21,3 +21,45 @@ a{
 a:visited{
   color:black;
 }
+.plant{
+  border: 2px solid black;
+  width:40%;
+  margin: 1rem auto;
+  border-radius: 2.5rem;
+}
+.add-button{
+  margin: 1rem auto;
+}
+.update-button{
+  margin: 1rem auto;
+}
+.updateUserInfo{
+  margin: 1rem auto;
+}
+#userInfoForm{
+  border: 2px solid black;
+  width:40%;
+  margin: 1rem auto;
+  border-radius: 2.5rem;
+  padding:1rem;
+}
+#addPlantForm{
+  border: 2px solid black;
+  width:40%;
+  margin: 1rem auto;
+  border-radius: 2.5rem;
+  padding:1rem;
+}
+#updatePlantForm{
+  border: 2px solid black;
+  width:40%;
+  margin: 1rem auto;
+  border-radius: 2.5rem;
+  padding:1rem;
+}
+button{
+  margin-bottom:1rem;
+}
+.update-user-button{
+  margin-top:1.5rem;
+}

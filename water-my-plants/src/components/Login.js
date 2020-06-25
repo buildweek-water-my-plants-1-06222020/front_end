@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import { withFormik } from 'formik';
 import * as yup from 'yup';
-
+import UserContext from '../contexts/UserContext'
 
 import { 
   Input,
@@ -12,9 +12,12 @@ import {
 } from '../StyledComponents'
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const Login = props => {
-  const { errors, touched } = props;
 
+
+const Login = props => {
+  const { errors, touched} = props;
+  
+  
   return (
     <>
       <Heading>Login</Heading>
@@ -52,6 +55,7 @@ export default withFormik({
     axiosWithAuth()
       .post('/auth/login/', values)
       .then(res => {
+        localStorage.setItem('userId', res.data.user_id)
         localStorage.setItem('token', res.data.token);
         resetForm();
         return props.history.push('/plantlist');
