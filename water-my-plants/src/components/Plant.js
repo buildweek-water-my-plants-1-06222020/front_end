@@ -2,26 +2,24 @@ import React from 'react'
 import {useHistory} from 'react-router-dom';
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 
-const Plant = props => {
+const Plant = ({plant}) => {
     const { push } = useHistory();
-
+    console.log(plant)
     const handleDelete = e => {
-        e.preventDefault();
-        axiosWithAuth
-        .delete(`/plants/${props.plant.id}`)
+        axiosWithAuth()
+        .delete(`/plants/${plant.plant_id}`)
         .then(res => {
-            props.getPlantList();
-            push('/plantlist')
+            window.location.reload()
         })
         .catch(err => console.log(err))
       }
       
     return(
         <div className='plant'>
-            <h2 className='nickname'>{props.plant.nickname}</h2>
-            <h3 className='species'>{props.plant.species}</h3>
-            <h3 className='h2o_frequency'>{props.plant.h2o_frequency}</h3>
-            <button onClick={() => push(`/edit-plant/${props.plant.id}`)}>Edit Plant</button>
+            <h2 className='nickname'>{plant.nickname}</h2>
+            <h3 className='species'>{plant.species}</h3>
+            <h3 className='h2o_frequency'>{plant.h2o_frequency}</h3>
+            <button onClick={() => push(`/edit-plant/${plant.plant_id}`)}>Edit Plant</button>
             <button onClick={handleDelete}>Delete Plant</button>
         </div>
     )
@@ -29,6 +27,3 @@ const Plant = props => {
 
 export default Plant;
 
-//nickname
-//species
-//h20Frequency

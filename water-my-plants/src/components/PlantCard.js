@@ -11,7 +11,7 @@ const PlantCard = () => {
                 <Plant
                 key={plant.id}
                 plant={plant}
-                getPlantList={getPlantList}
+                className='plant'
                 />
             ))}
         </div>
