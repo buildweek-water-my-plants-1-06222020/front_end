@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import PlantContext from '../contexts/PlantContext'
 import UserContext from '../contexts/UserContext'
@@ -13,7 +13,7 @@ const initlalDetails = {
 const AddPlant = () => {
     const { push } = useHistory();
     const [details, setDetails] = useState(initlalDetails)
-    const { plantList, setPlantList, getPlantList} = useContext(PlantContext)
+    const { plantList, setPlantList} = useContext(PlantContext)
     const {userId} = useContext(UserContext)
 
     const handleChange = e => {
@@ -34,6 +34,7 @@ const AddPlant = () => {
             })
             .catch(err => console.log(err))
     }
+
 
     return (
         <div id='addPlant'>

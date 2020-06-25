@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react'
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 import UserContext from '../contexts/UserContext'
 

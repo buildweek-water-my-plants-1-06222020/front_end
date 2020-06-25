@@ -16,9 +16,9 @@ const Plant = ({plant}) => {
       
     return(
         <div className='plant'>
-            <h2 className='nickname'>{plant.nickname}</h2>
-            <h3 className='species'>{plant.species}</h3>
-            <h3 className='h2o_frequency'>{plant.h2o_frequency}</h3>
+            <h2 className='nickname'>Plant Name: {plant.nickname}</h2>
+            <h3 className='species'>Plant Species: {plant.species}</h3>
+            <h3 className='h2o_frequency'> Water Frequency: {plant.h2o_frequency}</h3>
             <button onClick={() => push(`/edit-plant/${plant.plant_id}`)}>Edit Plant</button>
             <button onClick={handleDelete}>Delete Plant</button>
         </div>

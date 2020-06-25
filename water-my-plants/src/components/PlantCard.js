@@ -3,7 +3,7 @@ import PlantContext from '../contexts/PlantContext'
 import Plant from './Plant'
 
 const PlantCard = () => {
-    const { getPlantList, plantList } = useContext(PlantContext)
+    const { plantList } = useContext(PlantContext)
    console.log(plantList)
     return(
         <div>

@@ -14,13 +14,11 @@ const EditPlant = () => {
     const { push } = useHistory();
     const { id } = useParams();
     const [details, setDetails] = useState(initialDetails)
-    const { setPlantList } = useContext(PlantContext)
 
     useEffect(() => {
         axiosWithAuth()
             .get(`/plants/${id}`)
             .then(res => {
-                console.log(res.data.plant_id)
                 setDetails({
                     nickname: res.data.nickname,
                     species: res.data.species,
