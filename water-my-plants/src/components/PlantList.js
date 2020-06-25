@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import PlantCard from './PlantCard'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import PlantContext from '../contexts/PlantContext'
-import { useParams, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import UserContext from '../contexts/UserContext'
 
 
