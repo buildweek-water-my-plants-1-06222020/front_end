@@ -21,7 +21,11 @@ const EditPlant = () => {
             .get(`/plants/${id}`)
             .then(res => {
                 console.log(res.data.plant_id)
-                setDetails(res.data);
+                setDetails({
+                    nickname: res.data.nickname,
+                    species: res.data.species,
+                    h2o_frequency: res.data.h2o_frequency
+                });
             })
             .catch(err => console.log(err));
     }, [id]);
@@ -39,7 +43,6 @@ const EditPlant = () => {
         axiosWithAuth()
         .put(`/plants/${id}`, details)
         .then(res => {
-            setPlantList(res.data);
             push(`/plantlist`).reset()
         })
         .catch(err => console.log(err))
