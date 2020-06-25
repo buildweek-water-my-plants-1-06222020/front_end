@@ -35,6 +35,7 @@ const AddPlant = () => {
             .catch(err => console.log(err))
     }
 
+
     return (
         <div id='addPlant'>
             <h2>Add A Plant</h2>

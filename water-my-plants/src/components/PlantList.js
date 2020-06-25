@@ -23,22 +23,8 @@ const PlantList = () => {
     }, [userId.userId])
 
 
-    // const getPlantList = () => {
-    //   axiosWithAuth()
-    //   .get(`/auth/plants`)
-    //   .then(res => setPlantList(res.data))
-    // //   .then(res => console.log(res.data[0]))
-    //   .catch(err => console.log(err))
-    // };
-
-    // useEffect(() => {
-    //     getPlantList()
-    // }, [])
-
-
-
     return (
-        <div>
+        <div id='plantList'>
             <h1>Water My Plants</h1>
             <h2>{`My Plant List:`}</h2>
             <button onClick={() => push('/add-plant')}>Add A Plant</button>

@@ -15,17 +15,36 @@ code {
 
 a{
   text-decoration: none;
-  padding:1rem;
-  color:black;
+  padding:2rem;
+  color:white;
+  text-shadow: 2px 2px black;
+  font-weight: bold;
+  font-size:2rem;
 }
 a:visited{
-  color:black;
+  color:white;
 }
+a:hover{
+  color:green;
+  background-color: white;
+  border-radius: 2.5rem;
+  padding:1rem
+}
+
 .plant{
   border: 2px solid black;
   width:40%;
   margin: 1rem auto;
   border-radius: 2.5rem;
+  
+}
+#userInfoForm{
+  background-image: url("http://barushe1987.sweb.cz/Screen%20Shot%202020-06-22%20at%208.42.29%20PM.png");
+}
+#plantList{
+  background-image: url('./sarah-dorweiler-x2Tmfd1-SgA-unsplash.jpg');
+  background-repeat: fill;
+  background-position: bottom;
 }
 .add-button{
   margin: 1rem auto;
@@ -63,7 +82,18 @@ button{
 .update-user-button{
   margin-top:1.5rem;
 }
-
+nav{
+  background-image: url('./scott-webb-e6VmcXF8llA-unsplash.jpg');
+  height:10rem;
+  text-align: center;
+  padding-top:4rem;
+}
+.App{
+  background-color: #ebebeb;
+}
+html{
+  background-color: #ebebeb;
+}
 
 
 
