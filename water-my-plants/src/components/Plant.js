@@ -4,7 +4,7 @@ import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 const Plant = ({plant}) => {
     const { push } = useHistory();
-    console.log(plant)
+   
     const handleDelete = e => {
         axiosWithAuth()
         .delete(`/plants/${plant.plant_id}`)
